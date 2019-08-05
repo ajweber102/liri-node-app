@@ -18,6 +18,10 @@ function doSomething(action, argument) {
 
 	switch (action) {
 		
+		case "my-tweets": 
+		getMyTweets();
+		break;
+
 		case "spotify-this-song":
 		
 		var songTitle = argument;
@@ -35,7 +39,7 @@ function doSomething(action, argument) {
 		var movieTitle = argument;
 
 		if (movieTitle === "") {
-			getMovieInfo("Book of Eli");
+			getMovieInfo("Mr. Nobody");
 
 		} else {
 			getMovieInfo(movieTitle);
@@ -56,6 +60,27 @@ function retrieveArgument() {
 		argument += argumentArray[i];
 	}
 	return argument;
+}
+
+function getMyTweets() {
+	
+	var client = new Twitter(twitterKeysFile.twitterKeys);
+
+	var params = {q: '@aajweber', count: 20};
+
+	client.get('search/tweets', params, function(error, tweets, response) {
+	  if (!error) {
+
+	  	for (var i = 0; i < tweets.statuses.length; i++) {
+	  		var tweetText = tweets.statuses[i].text;
+	  		logOutput("Tweet Text: " + tweetText);
+	  		var tweetCreationDate = tweets.statuses[i].created_at;
+	  		logOutput("Tweet Creation Date: " + tweetCreationDate);
+	  	}
+	  } else {
+	  	logOutput(error);
+	  }
+	});
 }
 
 function getSongInfo(songTitle) {
@@ -82,6 +107,21 @@ function getSongInfo(songTitle) {
 		logOutput("Album Name: " + data.tracks.items[0].album.name);
 	});
 	
+}
+
+function lookupSpecificSong() {
+
+	spotify.lookup({type: 'track', id: 'SPOTIFY_ID'}, function(err, data) {
+		if (err) {
+			logOutput.error(err);
+			return
+		}
+
+		logOutput("Artist: " + data.artists[0].name);
+		logOutput("Song: " + data.name);
+		logOutput("Spotify Preview URL: " + data.preview_url);
+		logOutput("Album Name: " + data.album.name);
+	});
 }
 
 function getMovieInfo(movieTitle) {

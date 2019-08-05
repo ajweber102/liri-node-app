@@ -6,3 +6,7 @@ exports.twitterKeys = {
   access_token_key: '751444632639311873-R0fM7HKFlquPUnh9VOmq5ft05lOZGul',
   access_token_secret: 'vo25Zak8iPatOSeqg3GaTe2YK78Z8C7E7bH2WjzS1Hs7o'
 }
+exports.spotify = {
+  id: process.env.SPOTIFY_ID,
+  secret: process.env.SPOTIFY_SECRET
+}

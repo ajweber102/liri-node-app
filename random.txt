@@ -1,4 +1,1 @@
-spotify-this-song,"Belated Promise Ring"
-
-Client ID iJotXTJPVSrcor0IKBBg5FbXg
-Client Secret EA2TN3NghADVaDOJ9eUBplHyyjo5GNh5cfPlwLDzhuuVQlH1Jg
+spotify-this-song,"I Want it That Way"
