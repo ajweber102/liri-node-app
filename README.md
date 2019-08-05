@@ -1,1 +1,1 @@
-# liri-node-app
+Liri searches songs, movies, and posts tweets at your command.

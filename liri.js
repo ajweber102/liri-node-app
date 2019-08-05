@@ -42,8 +42,8 @@ function doSomething(action, argument) {
 		}
 		break;
 
-		case "run-it": 
-		runIt();
+		case "do-what-it-says": 
+		doWhatItSays();
 		break;
 	}
 }
@@ -107,19 +107,15 @@ function getMovieInfo(movieTitle) {
 	});
 }
 
-function runIt() {
+function doWhatItSays() {
 
 	fs.readFile("random.txt", "utf8", function(err, data) {
 		if (err) {
 			logOutput.error(err);
 		} else {
-
 			var randomArray = data.split(",");
-
 			action = randomArray[0];
-
 			argument = randomArray[1];
-
 			doSomething(action, argument);
 		}
 	});
